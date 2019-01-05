@@ -8,26 +8,29 @@ class Codenewbiepod::CLI
     goodbye
   end
 
+
   def list_episodes
     @episodes = Codenewbiepod::Episode.all
-    @episodes.each.with_index(1) do |episode, i|
-      puts "#{i}. #{episode.title} - #{episode.guest} aired on #{episode.release_date}"
+    @episodes.each.with_index(2) do |episode, i|
+      puts "#{i}. \"#{episode.title}\"\n With #{episode.guest} aired on #{episode.release_date}"
     end
   end
 
   def menu
     input = nil
     while input != "exit"
-    puts "Enter the Episode number you'd like more info on or type list to view all episodes. Type exit to exit."
+    puts "Enter the episode number to retrieve the URL for a given episode, or type list to view all episodes. Type exit to exit."
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @episodes[input.to_i-1]
+        puts "Episode link: " + @episodes[input.to_i-1].url + "\n Happy listening!"
       elsif input == "list"
         list_episodes
+      elsif input == "exit"
       else
         puts "Invalid input, please retry."
       end
+
     end
   end
 
