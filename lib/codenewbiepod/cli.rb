@@ -11,7 +11,7 @@ class Codenewbiepod::CLI
 
   def list_episodes
     @episodes = Codenewbiepod::Episode.all
-    @episodes.each.with_index(2) do |episode, i|
+    @episodes.each.with_index(1) do |episode, i|
       puts "#{i}. \"#{episode.title}\"\n With #{episode.guest} aired on #{episode.release_date}"
     end
   end
